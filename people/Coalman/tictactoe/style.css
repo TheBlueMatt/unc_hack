@@ -1,0 +1,25 @@
+td {
+	text-align: center;
+	border: 2px black solid;
+	width: 64px;
+	height: 64px;
+}
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+h1 {
+	text-align: center;
+	font-size: 48px;
+}
+h2 {
+	text-align: center;
+}
+button {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 128px;
+	height: 32px;
+	
+}
