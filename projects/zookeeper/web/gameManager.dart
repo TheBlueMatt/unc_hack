@@ -2,6 +2,7 @@ import 'boardState.dart';
 import 'animals.dart';
 import 'player.dart';
 import 'htmlGen.dart';
+import 'dart:html';
 
 /**
  * Manages the game logic, starts timers, etc
@@ -9,12 +10,18 @@ import 'htmlGen.dart';
 class GameManager {
     BoardState boardState = new BoardState();
     List<Animal> animals;
+    Player player;
     
     /*
      * Initialze game board and start timers
      */
     setupGame() {
-        // TODO: Implement me!
+        // create our player object.
+        this.player = new Player(this.boardState);
+        
+        // Set up our keyboard event handlers.
+        // keyDown! Not keyPress!
+        document.on.keyDown.add(this.player.handleKeyEvent);
     }
 }
 
