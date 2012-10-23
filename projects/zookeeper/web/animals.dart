@@ -23,5 +23,6 @@ class TheOneTheOnlyAnimal extends Animal {
     /* Move the animal/update board state */
     void doMove() {
         // TODO: Implement me!
+        
     }
 }

@@ -1,6 +1,7 @@
 import 'boardState.dart';
 import 'animals.dart';
 import 'player.dart';
+import 'htmlGen.dart';
 
 /**
  * Manages the game logic, starts timers, etc
@@ -22,4 +23,5 @@ num rotatePos = 0;
 void main() {
     GameManager manager = new GameManager();
     manager.setupGame();
+    new HtmlGen().genHtml(manager.boardState);
 }
