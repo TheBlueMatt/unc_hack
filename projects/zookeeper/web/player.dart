@@ -21,10 +21,10 @@ class Player {
             handleLeftKey();
         }
         // right key.
-        else if (e.keyCode == 32) {
+        else if (e.keyCode == 39) {
             handleRightKey();
         }
-        else if (e.keyCode == 39) {
+        else if (e.keyCode == 32) {
             handleBuildKey();
         }
     }
