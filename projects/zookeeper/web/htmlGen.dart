@@ -13,7 +13,7 @@ class HtmlGen {
         for (int x = 0; x < board.board.length; x++) {
             html.add("<tr>");
             for (int y = 0; y < board.board[x].length; y++) {
-                html.add("<td id='$x.$y' style='background-color:${board.board[x][y].state ? "green" : "red"}'>${board.board[x][y].state.toString()[0]}");
+                html.add("<td id='$x.$y' style='width: 20px;background-color:${board.board[x][y].state ? "green" : "white"}'>${board.board[x][y].state.toString()[0]}");
                 for (int i = 0; i < animals.length; i++) {
                     if (animals[i].x == x && animals[i].y == y) {
                         html.add(" A$i");
