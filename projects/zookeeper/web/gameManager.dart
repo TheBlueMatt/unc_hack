@@ -4,6 +4,7 @@ import 'player.dart';
 import 'htmlGen.dart';
 import 'dart:html';
 import 'dart:math';
+import 'dart:isolate';
 
 /**
  * Manages the game logic, starts timers, etc
@@ -33,6 +34,12 @@ class GameManager {
             this.animals.add(new TheOneTheOnlyAnimal(boardState, i, 3));
             this.animals[i].doMove();
         }
+        Timer timer = new Timer.repeating(1000, function(Timer timer) {
+            this.animals.forEach(function(Animal animal) {
+                animal.doMove();
+            });
+            new HtmlGen().genHtml(boardState, animals);
+        });
     }
     
     genBoxField() {
