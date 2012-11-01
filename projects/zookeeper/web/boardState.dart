@@ -38,9 +38,9 @@ class BoardState {
     /** true if the given point is outside of the blocks area
      */
     bool isOutisideOfBlocksArea(int x, int y) {
-        return x < (WIDTH - BLOCKS_WIDTH) / 2 ||
-            x > (WIDTH - BLOCKS_WIDTH) / 2 + BLOCKS_WIDTH ||
-            y < (HEIGHT - BLOCKS_HEIGHT) / 2 ||
-            y > (HEIGHT - BLOCKS_HEIGHT) / 2 + BLOCKS_HEIGHT;
+        return x < (WIDTH - BLOCKS_WIDTH) ~/ 2 ||
+            x > (WIDTH - BLOCKS_WIDTH) ~/ 2 + BLOCKS_WIDTH ||
+            y < (HEIGHT - BLOCKS_HEIGHT) ~/ 2 ||
+            y > (HEIGHT - BLOCKS_HEIGHT) ~/ 2 + BLOCKS_HEIGHT;
     }
 }
