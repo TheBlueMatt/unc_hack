@@ -40,17 +40,12 @@ class GameManager {
         int topLeftX = (boardState.WIDTH~/2) - (boardState.BLOCKS_WIDTH~/2);
         int topLeftY = (boardState.HEIGHT~/2) - (boardState.BLOCKS_HEIGHT~/2);
         for (int i = 0; i < boardState.BLOCKS_HEIGHT; i++) {
-            BoardSquare bs = new BoardSquare();
-            bs.state = true;
-            boardState.board[topLeftX][topLeftY+i] = bs;
-            boardState.board[topLeftX+boardState.BLOCKS_WIDTH-1][topLeftY+i] = bs;
+            boardState.board[topLeftX][topLeftY+i].state = true;
+            boardState.board[topLeftX+boardState.BLOCKS_WIDTH-1][topLeftY+i].state = true;
         }
-        
         for (int i = 0; i < boardState.BLOCKS_WIDTH; i++) {
-            BoardSquare bs = new BoardSquare();
-            bs.state = true;
-            boardState.board[topLeftX+i][topLeftY] = bs;
-            boardState.board[topLeftX+i][topLeftY+boardState.BLOCKS_HEIGHT-1] = bs;
+            boardState.board[topLeftX+i][topLeftY].state = true;
+            boardState.board[topLeftX+i][topLeftY+boardState.BLOCKS_HEIGHT-1].state = true;
         }
     }
 }
