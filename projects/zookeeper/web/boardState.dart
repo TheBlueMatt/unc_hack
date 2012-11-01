@@ -11,15 +11,15 @@ class BoardSquare {
      * 3: full (replaced - draw partially)
      */
     int state;
-    int height = 30;
-    int width = 60;
 }
 
 /*
  * State of the board - mostly just a matrix of BoardSquares
  */
 class BoardState {
-    const int WIDTH = 99, HEIGHT = 99;
+    const int WIDTH = 120, HEIGHT = 60;
+    const int BLOCKS_WIDTH = 60, BLOCKS_HEIGHT = 30;
+    
     List<List<BoardSquare>> board;
     
     BoardState() {
