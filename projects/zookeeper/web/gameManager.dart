@@ -22,6 +22,13 @@ class GameManager {
         // Set up our keyboard event handlers.
         // keyDown! Not keyPress!
         document.on.keyDown.add(this.player.handleKeyEvent);
+                
+        // Create animals and setup a timer for them to run
+        this.animals = new List<Animal>();
+        for (int i = 0; i < 3; i++) {
+            this.animals.add(new TheOneTheOnlyAnimal(boardState, i, 3));
+            this.animals[i].doMove();
+        }
     }
 }
 
@@ -30,5 +37,5 @@ num rotatePos = 0;
 void main() {
     GameManager manager = new GameManager();
     manager.setupGame();
-    new HtmlGen().genHtml(manager.boardState);
+    new HtmlGen().genHtml(manager.boardState, manager.animals);
 }
