@@ -16,7 +16,7 @@ abstract class Animal {
 
 class TheOneTheOnlyAnimal extends Animal {
     int xVelocity, yVelocity;
-    const int VELOCITY = 10;
+    const int VELOCITY = 5;
 
     /**
      * 

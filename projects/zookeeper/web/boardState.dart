@@ -16,7 +16,7 @@ class BoardSquare {
  */
 class BoardState {
     const int WIDTH = 120, HEIGHT = 60;
-    const int BLOCKS_WIDTH = 60, BLOCKS_HEIGHT = 30;
+    const int BLOCKS_WIDTH = 90, BLOCKS_HEIGHT = 40;
     
     List<List<BoardSquare>> board;
     
