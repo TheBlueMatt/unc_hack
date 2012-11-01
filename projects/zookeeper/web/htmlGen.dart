@@ -10,9 +10,9 @@ class HtmlGen {
     genHtml(BoardState board, List<Animal> animals) {
         //WOO slowest possible html generator possible!
         List<String> html = new List();
-        for (int x = 0; x < board.board.length; x++) {
+        for (int y = 0; y < board.HEIGHT; y++) {
             html.add("<tr>");
-            for (int y = 0; y < board.board[x].length; y++) {
+            for (int x = 0; x < board.WIDTH; x++) {
                 html.add("<td id='$x.$y' style='background-color:${board.board[x][y].state ? "green" : "red"}'>${board.board[x][y].state.toString()[0]}");
                 for (int i = 0; i < animals.length; i++) {
                     if (animals[i].x == x && animals[i].y == y) {
