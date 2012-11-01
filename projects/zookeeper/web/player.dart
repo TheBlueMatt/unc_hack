@@ -24,6 +24,15 @@ class Player {
         else if (e.keyCode == 39) {
             handleRightKey();
         }
+        // up key.
+        else if (e.keyCode == 38) {
+            handleUpKey();
+        }
+        // down key.
+        else if (e.keyCode == 40) {
+            handleDownKey();
+        }
+        // space/build key.
         else if (e.keyCode == 32) {
             handleBuildKey();
         }
@@ -41,6 +50,20 @@ class Player {
      */
     void handleRightKey () {
         //TODO: Implement me!
+    }
+    
+    /*
+     * Handle the "move up" key
+     */
+    void handleUpKey () {
+        
+    }
+    
+    /*
+     * Handle the "move down" key
+     */
+    void handleDownKey () {
+        
     }
     
     /*
