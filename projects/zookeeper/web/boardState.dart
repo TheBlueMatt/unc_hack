@@ -6,6 +6,9 @@ library boardState;
  */
 class BoardSquare {
     bool state;
+    BoardSquare() {
+        this.state = false;
+    }
 }
 
 /*
@@ -19,8 +22,12 @@ class BoardState {
     
     BoardState() {
         board = new List<List<BoardSquare>>(WIDTH);
-        for (int i = 0; i < WIDTH; i++)
-            board[i] = new List<BoardSquare>(HEIGHT);
+        for (int x = 0; x < WIDTH; x++) {
+            board[x] = new List<BoardSquare>(HEIGHT);
+            for (int y = 0; y < HEIGHT; y++) {
+                board[x][y] = new BoardSquare();
+            }
+        }
     }
     
     void setSquareState(int x, int y, BoardSquare state) {
