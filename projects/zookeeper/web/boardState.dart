@@ -5,12 +5,7 @@ library boardState;
  * Probably doesn't need a class, but you never know what may be needed
  */
 class BoardSquare {
-    /*
-     * 0: empty
-     * 1: full
-     * 3: full (replaced - draw partially)
-     */
-    int state;
+    bool state;
 }
 
 /*
