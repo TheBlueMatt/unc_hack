@@ -55,7 +55,7 @@ class GameManager {
             boardState.board[topLeftX+i][topLeftY+boardState.BLOCKS_HEIGHT].state = true;
         }
         boardState.board[(boardState.WIDTH - boardState.BLOCKS_WIDTH) ~/ 2 + boardState.BLOCKS_WIDTH]
-        [(boardState.HEIGHT - boardState.BLOCKS_HEIGHT) ~/ 2 + boardState.BLOCKS_HEIGHT].state = true;
+                        [(boardState.HEIGHT - boardState.BLOCKS_HEIGHT) ~/ 2 + boardState.BLOCKS_HEIGHT].state = true;
     }
 }
 
