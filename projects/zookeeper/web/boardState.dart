@@ -33,8 +33,7 @@ class BoardState {
     }
     
     // Helper functions for examining board state
-    /*
-     * @returns true if the given point is outside of the blocks area
+    /** true if the given point is outside of the blocks area
      */
     bool isOutisideOfBlocksArea(int x, int y) {
         return x < (WIDTH - BLOCKS_WIDTH) / 2 ||
