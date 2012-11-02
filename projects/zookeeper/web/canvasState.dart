@@ -33,7 +33,7 @@ class CanvasState {
     
     drawBlock(x, y, color) {
         this.ctx.fillStyle = color;
-        this.ctx.fillRect(x, y, 10, 10);
+        this.ctx.fillRect(x*10, y*10, 10, 10);
     }
     
     /** 
@@ -56,20 +56,20 @@ class CanvasState {
 
         // Draw the animals.
         for (int i = 0; i < animals.length; i++) {
-            this.drawBlock(animals[i].getX()*10, animals[i].getY()*10, "#ff0000");
+            this.drawBlock(animals[i].getX(), animals[i].getY(), "#ff0000");
         }
         
         // Draw the player!
-        this.drawBlock(boardState.getXPosition(player.location)*10, boardState.getYPosition(player.location), "#0000ff");
+        this.drawBlock(boardState.getXPosition(player.location), boardState.getYPosition(player.location), "#0000ff");
 
         
         for (int x = coordinates.offsetX; x < coordinates.offsetX + coordinates.boxWidth; x++) {
             for (int y = coordinates.offsetY; y < coordinates.offsetY + coordinates.boxHeight; y++) {
                 if (boardState.board[x][y].state) {
-                    this.drawBlock(x*10, y*10, "#000000");
+                    this.drawBlock(x, y, "#000000");
                 }
                 else {
-                    this.drawBlock(x*10, y*10, "#ffffff");
+                    this.drawBlock(x, y, "#ffffff");
                 }
             }
         }
