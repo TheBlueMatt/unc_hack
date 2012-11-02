@@ -1,5 +1,6 @@
 library animals;
 import 'boardState.dart';
+import 'player.dart';
 import 'dart:math';
 
 /*
@@ -10,7 +11,7 @@ abstract class Animal {
     BoardState _state; // _ signifies private
     
     /* Move the animal/update board state */
-    void doMove();
+    void doMove(Player playerToTarget);
     
     int getX();
     int getY();
@@ -58,7 +59,7 @@ class TheOneTheOnlyAnimal extends Animal {
     }
   
     /* Move the animal/update board state */
-    void doMove() {
+    void doMove(Player playerToTarget) {
         if (this._state.isOutisideOfBlocksArea(getX(), getY())) {
             this.outside = true;
             this.location = this._state.getLocation(getX(), getY());

@@ -37,11 +37,10 @@ class GameManager {
         this.animals = new List<Animal>();
         for (int i = 0; i < 3; i++) {
             this.animals.add(new TheOneTheOnlyAnimal(boardState, i, 3));
-            this.animals[i].doMove();
         }
         Timer timer = new Timer.repeating(100, function(Timer timer) {
             this.animals.forEach(function(Animal animal) {
-                animal.doMove();
+                animal.doMove(player);
             });
         });
         
