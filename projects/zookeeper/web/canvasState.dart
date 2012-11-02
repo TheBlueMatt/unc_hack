@@ -3,6 +3,7 @@ library canvasState;
 import 'dart:html';
 import 'boardState.dart';
 import 'animals.dart';
+import 'player.dart';
 
 /**
  * Update coordinates for drawBoardState (see comment at drawBoardState)
@@ -46,7 +47,7 @@ class CanvasState {
      *     boxWidth: Width (in single board tiles) of map portion to draw.
      *     boxHeight: Height (in single board tiles) of map portion to draw.
      */
-    drawBoardState(BoardState boardState, List<Animal> animals, UpdateCoordinates coordinates) {
+    drawBoardState(BoardState boardState, Player player, List<Animal> animals, UpdateCoordinates coordinates) {
         if (coordinates.boxHeight == -1) {
             // if boxHeight is -1, then that means boxWidth is still -1.
             coordinates.boxWidth = boardState.board.length;
@@ -63,5 +64,8 @@ class CanvasState {
         for (int i = 0; i < animals.length; i++) {
             this.drawBlock(animals[i].getX()*10, animals[i].getY()*10, "#ff0000");
         }
+        
+        // Draw the player!
+        this.drawBlock(boardState.getXPosition(player.location)*10, boardState.getYPosition(player.location), "#0000ff");
     }
 }

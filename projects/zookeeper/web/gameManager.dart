@@ -29,7 +29,7 @@ class GameManager {
         // Set up our keyboard event handlers.
         // keyDown! Not keyPress!
         document.on.keyDown.add(function(KeyboardEvent e) {
-            this.canvas.drawBoardState(this.boardState, this.animals, this.player.handleKeyEvent(e));
+            this.canvas.drawBoardState(this.boardState, this.player, this.animals, this.player.handleKeyEvent(e));
         });
         
         // Generate the initial box field.
@@ -42,11 +42,11 @@ class GameManager {
         }
         Timer timer = new Timer.repeating(100, function(Timer timer) {
             this.animals.forEach(function(Animal animal) {
-                this.canvas.drawBoardState(this.boardState, this.animals, animal.doMove(player));
+                this.canvas.drawBoardState(this.boardState, this.player, this.animals, animal.doMove(player));
             });
         });
         
-        this.canvas.drawBoardState(this.boardState, this.animals, new UpdateCoordinates());
+        this.canvas.drawBoardState(this.boardState, this.player, this.animals, new UpdateCoordinates());
         // Example of how to draw only a portion of the map.
         //this.canvas.drawBoardState(this.boardState, this.animals, 30, 16, 2, 30);
     }
