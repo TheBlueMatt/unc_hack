@@ -5,7 +5,7 @@ import 'boardState.dart';
 import 'animals.dart';
 
 /**
- * Update coordinates for drawBoardState
+ * Update coordinates for drawBoardState (see comment at drawBoardState)
  */
 class UpdateCoordinates {
     int offsetX, offsetY, boxWidth, boxHeight;
@@ -35,15 +35,16 @@ class CanvasState {
         this.ctx.fillRect(x, y, 10, 10);
     }
     
-    // The box{Height,Width} vars are -1 by default, b/c I can't
-    // access the board height and width here (I'm not adding a member
-    // variable 'boardState' b/c I want to keep the two separate).
-    // 
-    // Parameter description:
-    //     offsetX: Offset (in single board tiles) in width.
-    //     offsetY: Offset (in single board tiles) in height.
-    //     boxWidth: Width (in single board tiles) of map portion to draw.
-    //     boxHeight: Height (in single board tiles) of map portion to draw.
+    /** The box{Height,Width} vars are -1 by default, b/c I can't
+     * access the board height and width here (I'm not adding a member
+     * variable 'boardState' b/c I want to keep the two separate).
+     * 
+     * Parameter description:
+     *     offsetX: Offset (in single board tiles) in width.
+     *     offsetY: Offset (in single board tiles) in height.
+     *     boxWidth: Width (in single board tiles) of map portion to draw.
+     *     boxHeight: Height (in single board tiles) of map portion to draw.
+     */
     drawBoardState(BoardState boardState, List<Animal> animals, UpdateCoordinates coordinates) {
         if (coordinates.boxHeight == -1) {
             // if boxHeight is -1, then that means boxWidth is still -1.
