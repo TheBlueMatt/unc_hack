@@ -34,7 +34,7 @@ class GameManager {
             this.animals.add(new TheOneTheOnlyAnimal(boardState, i, 3));
             this.animals[i].doMove();
         }
-        Timer timer = new Timer.repeating(1000, function(Timer timer) {
+        Timer timer = new Timer.repeating(100, function(Timer timer) {
             this.animals.forEach(function(Animal animal) {
                 animal.doMove();
             });
