@@ -1,5 +1,6 @@
 name:  zookeeper
 description:  A sample application
 
-#dependencies:
+dependencies:
 #  unittest: { sdk: unittest }
+  bot: 0.2.1

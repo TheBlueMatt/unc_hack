@@ -4,6 +4,7 @@ import 'player.dart';
 import 'htmlGen.dart';
 import 'dart:html';
 import 'dart:math';
+import 'canvasState.dart';
 
 /**
  * Manages the game logic, starts timers, etc
@@ -12,6 +13,7 @@ class GameManager {
     BoardState boardState = new BoardState();
     List<Animal> animals;
     Player player;
+    CanvasState canvas;
     
     /*
      * Initialze game board and start timers
@@ -19,6 +21,9 @@ class GameManager {
     setupGame() {
         // create our player object.
         this.player = new Player(this.boardState);
+        
+        // create our canvas object.
+        this.canvas = new CanvasState(document.query("#gameCanvas"));
         
         // Set up our keyboard event handlers.
         // keyDown! Not keyPress!
@@ -33,6 +38,10 @@ class GameManager {
             this.animals.add(new TheOneTheOnlyAnimal(boardState, i, 3));
             this.animals[i].doMove();
         }
+        
+        this.canvas.drawBoardState(this.boardState, this.animals);
+        // Example of how to draw only a portion of the map.
+        //this.canvas.drawBoardState(this.boardState, this.animals, 30, 16, 2, 30);
     }
     
     genBoxField() {
@@ -60,5 +69,5 @@ num rotatePos = 0;
 void main() {
     GameManager manager = new GameManager();
     manager.setupGame();
-    new HtmlGen().genHtml(manager.boardState, manager.animals);
+    //new HtmlGen().genHtml(manager.boardState, manager.animals);
 }
