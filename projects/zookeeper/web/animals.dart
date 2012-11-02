@@ -64,8 +64,12 @@ class TheOneTheOnlyAnimal extends Animal {
         if (this._state.isOutisideOfBlocksArea(getX(), getY())) {
             this.outside = true;
             this.location = this._state.getLocation(getX(), getY());
+            //TODO return
         } else {
             bool invertV = false;
+            int origX = getX();
+            int origY = getY();
+            
             this.x += xVelocity;
             this.y += yVelocity;
             for (int i = 0; i < this.radius; i++) {
@@ -79,7 +83,17 @@ class TheOneTheOnlyAnimal extends Animal {
                 xVelocity = -xVelocity;
                 yVelocity = -yVelocity;
             }
+            if (xVelocity > 0) {
+                if (yVelocity > 0)
+                    return new UpdateCoordinates(origX, origY, xVelocity.ceil().toInt() + 1, yVelocity.ceil().toInt() + 1);
+                else
+                    return new UpdateCoordinates(origX, getY(), xVelocity.ceil().toInt() + 1, -yVelocity.floor().toInt() + 1);
+            } else {
+                if (yVelocity > 0)
+                    return new UpdateCoordinates(getX(), origY, -xVelocity.floor().toInt() + 1, yVelocity.ceil().toInt() + 1);
+                else
+                    return new UpdateCoordinates(getX(), getY(), -xVelocity.floor().toInt() + 1, -yVelocity.floor().toInt() + 1);
+            }
         }
-        //TODO return
     }
 }
