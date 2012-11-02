@@ -43,7 +43,6 @@ class GameManager {
             this.animals.forEach(function(Animal animal) {
                 animal.doMove();
             });
-            new HtmlGen().genHtml(boardState, animals);
         });
         
         this.canvas.drawBoardState(this.boardState, this.animals);
