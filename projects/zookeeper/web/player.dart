@@ -2,6 +2,7 @@ library player;
 import 'boardState.dart';
 import 'canvasState.dart';
 import 'dart:html';
+import 'dart:math';
 
 /*
  * Keeps track of the player
@@ -29,6 +30,8 @@ class Player {
     }
     
     UpdateCoordinates handleKeyEvent(KeyboardEvent e) {
+        int origX = this._state.getXPosition(this.location);
+        int origY = this._state.getYPosition(this.location);
         // left key.
         if (e.keyCode == 37) {
             handleLeftKey();
@@ -49,7 +52,11 @@ class Player {
         else if (e.keyCode == 32) {
             handleBuildKey();
         }
-        //TODO return
+        //TODO jump key
+        int newX = this._state.getXPosition(this.location);
+        int newY = this._state.getYPosition(this.location);
+        return new UpdateCoordinates(origX < newX ? origX : newX, origY < newY ? origY : origX,
+            (origX - newX).abs(), (origX - newX).abs());
     }
     
     /**
