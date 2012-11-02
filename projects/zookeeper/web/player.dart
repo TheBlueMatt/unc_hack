@@ -55,8 +55,8 @@ class Player {
         //TODO jump key
         int newX = this._state.getXPosition(this.location);
         int newY = this._state.getYPosition(this.location);
-        return new UpdateCoordinates(origX < newX ? origX : newX, origY < newY ? origY : origX,
-            (origX - newX).abs(), (origX - newX).abs());
+        return new UpdateCoordinates((origX < newX ? origX : newX) - 1, (origY < newY ? origY : origY) -1,
+            (origX - newX).abs()+2, (origY - newY).abs()+2);
     }
     
     /**
