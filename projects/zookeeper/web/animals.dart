@@ -32,7 +32,7 @@ class TheOneTheOnlyAnimal extends Animal {
     int location;
     // if (false) use x/y; if (true) use location
     bool outside;
-    const int VELOCITY = 1;
+    const double VELOCITY = 0.1;
 
     /**
      * 
@@ -65,6 +65,7 @@ class TheOneTheOnlyAnimal extends Animal {
             this.outside = true;
             this.location = this._state.getLocation(getX(), getY());
             //TODO return
+            return new UpdateCoordinates(0,0,0,0);
         } else {
             bool invertV = false;
             int origX = getX();

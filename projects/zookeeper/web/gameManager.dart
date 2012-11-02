@@ -40,10 +40,11 @@ class GameManager {
         for (int i = 0; i < 3; i++) {
             this.animals.add(new TheOneTheOnlyAnimal(boardState, i, 3));
         }
-        Timer timer = new Timer.repeating(100, function(Timer timer) {
+        Timer timer = new Timer.repeating(5, function(Timer timer) {
             this.animals.forEach(function(Animal animal) {
                 this.canvas.drawBoardState(this.boardState, this.player, this.animals, animal.doMove(player));
             });
+            this.canvas.drawBoardState(this.boardState, this.player, this.animals, new UpdateCoordinates(0,0,0,0));
         });
         
         this.canvas.drawBoardState(this.boardState, this.player, this.animals, new UpdateCoordinates());
