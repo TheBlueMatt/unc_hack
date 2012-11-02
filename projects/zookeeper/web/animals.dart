@@ -38,18 +38,26 @@ class TheOneTheOnlyAnimal extends Animal {
         if (this._state.isOutisideOfBlocksArea(x, y)) {
             //TODO Move like the player (towards the player)
         } else {
-            this.x += xVelocity;
-            this.y += yVelocity;
-            bool invertV = false;
-            for (int i = 0; i < this.radius; i++) {
-                if (this._state.board[this.x][this.y].state) {
-                    invertV = true;
-                    this._state.board[this.x][this.y].state = false;
+            int origX = this.x;
+            int origY = this.y;
+            for (int i = 0; i < VELOCITY; i++) {
+                bool invertV = false;
+                this.x = origX + (xVelocity * i ~/ VELOCITY);
+                this.y = origY + (yVelocity * i ~/ VELOCITY);
+                for (int i = 0; i < this.radius; i++) {
+                    //TODO: UPdate me when radius is > 1
+                    if (this._state.board[this.x][this.y].state) {
+                        invertV = true;
+                        this._state.board[this.x][this.y].state = false;
+                    }
                 }
-            }
-            if (invertV) {
-                xVelocity = -xVelocity;
-                yVelocity = -yVelocity;
+                if (invertV) {
+                    origX = this.x + xVelocity * (VELOCITY - i) ~/ VELOCITY;
+                    origY = this.y + yVelocity * (VELOCITY - i) ~/ VELOCITY;
+                    xVelocity = -xVelocity;
+                    yVelocity = -yVelocity;
+                }
+                //TODO Update display here
             }
         }
     }
