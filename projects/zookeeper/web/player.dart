@@ -7,12 +7,24 @@ import 'dart:html';
  */
 class Player {
     BoardState _state;
-    int moveDirection;
+    // Starts top left goes clockwise
+    int location;
+    // The max value + 1 of location
+    int locationSize;
+    
+    // The height of the player (ie starts at 0, grows/decreases after jump)
+    int height;
+    // Whether we are going up or falling back down
+    bool goingUp;
     
     Player(BoardState state) {
         this._state = state;
-        // The initial move direction is 0; player is initially not moving.
-        this.moveDirection = 0;
+        // Start in the middle of the top bar
+        this.location = state.BLOCKS_WIDTH ~/ 2;
+        this.locationSize = 2*state.BLOCKS_HEIGHT + 2*state.BLOCKS_WIDTH;
+        // Start on the blocks
+        this.height = 0;
+        this.goingUp = true;
     }
     
     void handleKeyEvent(KeyboardEvent e) {
@@ -38,38 +50,61 @@ class Player {
         }
     }
     
-    /*
+    /**
      * Handle the "move left" key
      */
     void handleLeftKey () {
-        //TODO: Implement me!
+        if (location < this._state.BLOCKS_WIDTH) {
+            location -= 1;
+        } else if (location >= this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT && location < 2*this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            location += 1;
+        }
     }
     
-    /*
+    /**
      * Handle the "move right" key
      */
     void handleRightKey () {
-        //TODO: Implement me!
+        if (location < this._state.BLOCKS_WIDTH) {
+            location += 1;
+        } else if (location >= this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT && location < 2*this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            location -= 1;
+        }
     }
     
-    /*
+    /**
      * Handle the "move up" key
      */
     void handleUpKey () {
-        
+        if (location >= this._state.BLOCKS_WIDTH && location < this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            location -= 1;
+        } else if (location >= 2*this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            location += 1;
+        }
     }
     
-    /*
+    /**
      * Handle the "move down" key
      */
     void handleDownKey () {
-        
+        if (location >= this._state.BLOCKS_WIDTH && location < this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            location += 1;
+        } else if (location >= 2*this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            location -= 1;
+        }
     }
     
-    /*
+    /**
      * Handle the "build" key
      */
     void handleBuildKey () {
+        //TODO: Implement me!
+    }
+    
+    /**
+     * Handle the "jump" key
+     */
+    void handleJumpKey() {
         //TODO: Implement me!
     }
 }
