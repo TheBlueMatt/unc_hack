@@ -1,5 +1,6 @@
 library player;
 import 'boardState.dart';
+import 'canvasState.dart';
 import 'dart:html';
 
 /*
@@ -27,7 +28,7 @@ class Player {
         this.goingUp = true;
     }
     
-    void handleKeyEvent(KeyboardEvent e) {
+    UpdateCoordinates handleKeyEvent(KeyboardEvent e) {
         // left key.
         if (e.keyCode == 37) {
             handleLeftKey();
@@ -48,6 +49,7 @@ class Player {
         else if (e.keyCode == 32) {
             handleBuildKey();
         }
+        //TODO return
     }
     
     /**

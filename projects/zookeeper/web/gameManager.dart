@@ -28,7 +28,9 @@ class GameManager {
         
         // Set up our keyboard event handlers.
         // keyDown! Not keyPress!
-        document.on.keyDown.add(this.player.handleKeyEvent);
+        document.on.keyDown.add(function(KeyboardEvent e) {
+            this.canvas.drawBoardState(this.boardState, this.animals, this.player.handleKeyEvent(e));
+        });
         
         // Generate the initial box field.
         genBoxField();
@@ -40,7 +42,7 @@ class GameManager {
         }
         Timer timer = new Timer.repeating(100, function(Timer timer) {
             this.animals.forEach(function(Animal animal) {
-                animal.doMove(player);
+                this.canvas.drawBoardState(this.boardState, this.animals, animal.doMove(player));
             });
         });
         
