@@ -3,6 +3,19 @@ library canvasState;
 import 'dart:html';
 import 'boardState.dart';
 
+/**
+ * Update coordinates for drawBoardState
+ */
+class UpdateCoordinates {
+    int offsetX, offsetY, boxWidth, boxHeight;
+    UpdateCoordinates([int offsetX = 0, int offsetY = 0, int boxWidth = -1, int boxHeight = -1]) {
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
+        this.boxWidth = boxWidth;
+        this.boxHeight = boxHeight;
+    }
+}
+
 class CanvasState {
 
     CanvasElement canvas;
@@ -30,14 +43,14 @@ class CanvasState {
     //     offsetY: Offset (in single board tiles) in height.
     //     boxWidth: Width (in single board tiles) of map portion to draw.
     //     boxHeight: Height (in single board tiles) of map portion to draw.
-    drawBoardState(BoardState boardState, List animals, [int offsetX = 0, int offsetY = 0, int boxWidth = -1, int boxHeight = -1]) {
-        if (boxHeight == -1) {
+    drawBoardState(BoardState boardState, List animals, UpdateCoordinates coordinates) {
+        if (coordinates.boxHeight == -1) {
             // if boxHeight is -1, then that means boxWidth is still -1.
-            boxWidth = boardState.board.length;
-            boxHeight = boardState.board[0].length;
+            coordinates.boxWidth = boardState.board.length;
+            coordinates.boxHeight = boardState.board[0].length;
         }
-        for (int x = offsetX; x < offsetX+boxWidth; x++) {
-            for (int y = offsetY; y < offsetY+boxHeight; y++) {
+        for (int x = coordinates.offsetX; x < coordinates.offsetX + coordinates.boxWidth; x++) {
+            for (int y = coordinates.offsetY; y < coordinates.offsetY + coordinates.boxHeight; y++) {
                 if (boardState.board[x][y].state) {
                     this.drawBlock(x*10, y*10, "#000000");
                 }

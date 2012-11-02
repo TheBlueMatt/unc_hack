@@ -45,7 +45,7 @@ class GameManager {
             });
         });
         
-        this.canvas.drawBoardState(this.boardState, this.animals);
+        this.canvas.drawBoardState(this.boardState, this.animals, new UpdateCoordinates());
         // Example of how to draw only a portion of the map.
         //this.canvas.drawBoardState(this.boardState, this.animals, 30, 16, 2, 30);
     }
