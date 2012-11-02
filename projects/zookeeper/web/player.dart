@@ -56,6 +56,8 @@ class Player {
     void handleLeftKey () {
         if (location < this._state.BLOCKS_WIDTH) {
             location -= 1;
+            if (location == -1)
+                location = locationSize-1;
         } else if (location >= this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT && location < 2*this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
             location += 1;
         }
@@ -80,6 +82,8 @@ class Player {
             location -= 1;
         } else if (location >= 2*this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
             location += 1;
+            if (location == locationSize)
+                location = 0;
         }
     }
     
@@ -106,5 +110,43 @@ class Player {
      */
     void handleJumpKey() {
         //TODO: Implement me!
+    }
+    
+    /**
+     * returns the x position of the player
+     */
+    int getXPosition() {
+        if (location < this._state.BLOCKS_WIDTH) {
+            // Top
+            return (this._state.WIDTH - this._state.BLOCKS_WIDTH) ~/ 2 + location;
+        } else if (location >= this._state.BLOCKS_WIDTH && location < this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            // Right
+            return (this._state.WIDTH - this._state.BLOCKS_WIDTH) ~/ 2 + this._state.BLOCKS_WIDTH;
+        } else if (location >= this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT && location < 2*this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            // Bottom
+            return (this._state.WIDTH - this._state.BLOCKS_WIDTH) ~/ 2 + 2*this._state.BLOCKS_WIDTH - location + this._state.BLOCKS_HEIGHT;
+        } else {
+            // Left
+            return (this._state.WIDTH - this._state.BLOCKS_WIDTH) ~/ 2;
+        }
+    }
+    
+    /**
+     * returns the y position of the player
+     */
+    int getYPosition() {
+        if (location < this._state.BLOCKS_WIDTH) {
+            // Top
+            return (this._state.HEIGHT - this._state.BLOCKS_HEIGHT) ~/ 2;
+        } else if (location >= this._state.BLOCKS_WIDTH && location < this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            // Right
+            return (this._state.HEIGHT - this._state.BLOCKS_HEIGHT) ~/ 2 + location - this._state.BLOCKS_WIDTH;
+        } else if (location >= this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT && location < 2*this._state.BLOCKS_WIDTH + this._state.BLOCKS_HEIGHT) {
+            // Bottom
+            return (this._state.HEIGHT - this._state.BLOCKS_HEIGHT) ~/ 2 + this._state.BLOCKS_HEIGHT;
+        } else {
+            // Left
+            return (this._state.HEIGHT - this._state.BLOCKS_HEIGHT) ~/ 2 - location + 2*this._state.BLOCKS_WIDTH + 2*this._state.BLOCKS_HEIGHT;
+        }
     }
 }
