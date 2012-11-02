@@ -35,7 +35,8 @@ class CanvasState {
         this.ctx.fillRect(x, y, 10, 10);
     }
     
-    /** The box{Height,Width} vars are -1 by default, b/c I can't
+    /** 
+     * The box{Height,Width} vars are -1 by default, b/c I can't
      * access the board height and width here (I'm not adding a member
      * variable 'boardState' b/c I want to keep the two separate).
      * 
