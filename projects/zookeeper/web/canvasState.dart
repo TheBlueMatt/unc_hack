@@ -53,13 +53,7 @@ class CanvasState {
             coordinates.boxWidth = boardState.board.length;
             coordinates.boxHeight = boardState.board[0].length;
         }
-        for (int x = coordinates.offsetX; x < coordinates.offsetX + coordinates.boxWidth; x++) {
-            for (int y = coordinates.offsetY; y < coordinates.offsetY + coordinates.boxHeight; y++) {
-                if (boardState.board[x][y].state) {
-                    this.drawBlock(x*10, y*10, "#000000");
-                }
-            }
-        }
+
         // Draw the animals.
         for (int i = 0; i < animals.length; i++) {
             this.drawBlock(animals[i].getX()*10, animals[i].getY()*10, "#ff0000");
@@ -67,5 +61,17 @@ class CanvasState {
         
         // Draw the player!
         this.drawBlock(boardState.getXPosition(player.location)*10, boardState.getYPosition(player.location), "#0000ff");
+
+        
+        for (int x = coordinates.offsetX; x < coordinates.offsetX + coordinates.boxWidth; x++) {
+            for (int y = coordinates.offsetY; y < coordinates.offsetY + coordinates.boxHeight; y++) {
+                if (boardState.board[x][y].state) {
+                    this.drawBlock(x*10, y*10, "#000000");
+                }
+                else {
+                    this.drawBlock(x*10, y*10, "#ffffff");
+                }
+            }
+        }
     }
 }
