@@ -40,7 +40,7 @@ class TheOneTheOnlyAnimal extends Animal {
     TheOneTheOnlyAnimal(BoardState state, int animalNum, int numAnimals) {
         this._state = state;
         //TODO Decide on const here
-        this.radius = 1;
+        this.radius = 3;
         // Start at the middle of the board and move outward in a circle with angles evenly split between each animal
         this.x = state.WIDTH / 2;
         this.y = state.HEIGHT / 2;
