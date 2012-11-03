@@ -5,6 +5,13 @@
     <meta charset="utf-8">
     <title>Zookeeper</title>
     <link rel="stylesheet" href="zookeeper.css">
+    <style type="text/css">
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
   </head>
   <body>
     <h1>Zookeeper</h1>
@@ -14,7 +21,8 @@
       <li>Animals are red (&nbsp;<span style="background-color: #ff0000">&nbsp;&nbsp;&nbsp;</span>&nbsp;)</li>
       <li>Walls are black (&nbsp;<span style="background-color: #000000">&nbsp;&nbsp;&nbsp;</span>&nbsp;)</li>
     </ul>
-    <canvas id="gameCanvas" width="1210" height="610" style="border: 1px solid black;"></canvas>
+    <canvas id="gameCanvas1" width="1000" height="500" style="border: 1px solid black;"></canvas>
+    <canvas id="gameCanvas2" width="1000" height="500" style="border: 1px solid black;"></canvas>
 
     <script type="application/dart" src="web/gameManager.dart"></script>
     <script src="https://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>

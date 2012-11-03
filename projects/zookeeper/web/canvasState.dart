@@ -20,20 +20,27 @@ class UpdateCoordinates {
 
 class CanvasState {
 
-    CanvasElement canvas;
-    CanvasRenderingContext2D ctx;
-    int width;
-    int height;
+    CanvasElement canvas1;
+    CanvasElement canvas2;
+    CanvasRenderingContext2D ctx1;
+    CanvasRenderingContext2D ctx2;
   
-    CanvasState (canvas) {
-        this.width = canvas.width;
-        this.height = canvas.height;
-        this.ctx = canvas.getContext("2d");
+    CanvasState (canvas1, canvas2) {
+        this.ctx1 = canvas1.getContext("2d");
+        this.ctx2 = canvas2.getContext("2d");
     }
     
-    drawBlock(x, y, color) {
-        this.ctx.fillStyle = color;
-        this.ctx.fillRect(x*10, y*10, 10, 10);
+    void drawBlock1(x, y, color, [opacity=true]) {
+        //this.ctx1.globalAlpha = (opacity) ? (0) : (1);
+        this.ctx1.fillStyle = color;
+        this.ctx1.fillRect(x*6, y*3, 6, 3);
+        this.ctx1.globalAlpha = 1;
+    }
+    
+    void drawBlock2(x, y, color, [opacity=true]) {
+      this.ctx1.globalAlpha = (opacity) ? (0) : (1);
+      this.ctx2.fillStyle = color;
+      this.ctx2.fillRect(x*6, y*3, 7, 7);
     }
     
     /** 
@@ -47,29 +54,32 @@ class CanvasState {
      *     boxWidth: Width (in single board tiles) of map portion to draw.
      *     boxHeight: Height (in single board tiles) of map portion to draw.
      */
-    drawBoardState(BoardState boardState, Player player, List<Animal> animals, UpdateCoordinates coordinates) {
+    void drawBoardState(BoardState boardState, Player player, List<Animal> animals, UpdateCoordinates coordinates) {
         if (coordinates.boxHeight == -1) {
             // if boxHeight is -1, then that means boxWidth is still -1.
             coordinates.boxWidth = boardState.board.length;
             coordinates.boxHeight = boardState.board[0].length;
         }
 
+        // clear the second context.
+        this.ctx2.clearRect(0, 0, 1000, 500);
+        
         // Draw the animals.
         for (int i = 0; i < animals.length; i++) {
-            this.drawBlock(animals[i].getX(), animals[i].getY(), "#ff0000");
+            this.drawBlock2(animals[i].getX(), animals[i].getY(), "#ff0000");
         }
         
         // Draw the player!
-        this.drawBlock(boardState.getXPosition(player.location), boardState.getYPosition(player.location), "#0000ff");
+        this.drawBlock2(boardState.getXPosition(player.location), boardState.getYPosition(player.location), "#0000ff");
 
         
         for (int x = coordinates.offsetX; x < coordinates.offsetX + coordinates.boxWidth; x++) {
             for (int y = coordinates.offsetY; y < coordinates.offsetY + coordinates.boxHeight; y++) {
                 if (boardState.board[x][y].state) {
-                    this.drawBlock(x, y, "#000000");
+                    this.drawBlock1(x, y, "#000000");
                 }
                 else {
-                    this.drawBlock(x, y, "#ffffff");
+                    this.drawBlock1(x, y, "#ffffff", true);
                 }
             }
         }

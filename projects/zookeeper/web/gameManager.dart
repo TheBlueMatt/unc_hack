@@ -1,7 +1,6 @@
 import 'boardState.dart';
 import 'animals.dart';
 import 'player.dart';
-import 'htmlGen.dart';
 import 'canvasState.dart';
 import 'dart:html';
 import 'dart:math';
@@ -19,12 +18,12 @@ class GameManager {
     /*
      * Initialze game board and start timers
      */
-    setupGame() {
+    void setupGame() {
         // create our player object.
         this.player = new Player(this.boardState);
         
         // create our canvas object.
-        this.canvas = new CanvasState(document.query("#gameCanvas"));
+        this.canvas = new CanvasState(document.query("#gameCanvas1"), document.query("#gameCanvas2"));
         
         // Set up our keyboard event handlers.
         // keyDown! Not keyPress!
@@ -52,7 +51,7 @@ class GameManager {
         //this.canvas.drawBoardState(this.boardState, this.animals, 30, 16, 2, 30);
     }
     
-    genBoxField() {
+    void genBoxField() {
         // Generate left and white portions of the board.
         int topLeftX = (boardState.WIDTH~/2) - (boardState.BLOCKS_WIDTH~/2);
         int topLeftY = (boardState.HEIGHT~/2) - (boardState.BLOCKS_HEIGHT~/2);

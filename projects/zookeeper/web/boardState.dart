@@ -15,8 +15,8 @@ class BoardSquare {
  * State of the board - mostly just a matrix of BoardSquares
  */
 class BoardState {
-    const int WIDTH = 700, HEIGHT = 100;
-    const int BLOCKS_WIDTH = 550, BLOCKS_HEIGHT = 75;
+    const int WIDTH = 168, HEIGHT = 168;
+    const int BLOCKS_WIDTH = 144, BLOCKS_HEIGHT = 72;
     
     List<List<BoardSquare>> board;
     
